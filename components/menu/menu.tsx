@@ -59,6 +59,7 @@ const InternalMenu = forwardRef<RcMenuRef, InternalMenuProps>((props, ref) => {
     mode,
     selectable,
     onClick,
+    overflowedIndicator,
     overflowedIndicatorPopupClassName,
     ...restProps
   } = props;
@@ -152,7 +153,9 @@ const InternalMenu = forwardRef<RcMenuRef, InternalMenuProps>((props, ref) => {
       <MenuContext.Provider value={contextValue}>
         <RcMenu
           getPopupContainer={getPopupContainer}
-          overflowedIndicator={<EllipsisOutlined />}
+          overflowedIndicator={
+            overflowedIndicator === undefined ? <EllipsisOutlined /> : overflowedIndicator
+          }
           overflowedIndicatorPopupClassName={classNames(
             prefixCls,
             `${prefixCls}-${theme}`,
